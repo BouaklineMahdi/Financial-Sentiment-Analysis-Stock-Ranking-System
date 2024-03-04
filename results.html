@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>PriceProphet</h1>
+        <h3>Analysis Results</h3>
+    </header>
+
+    <main>
+        {% if results %}
+            <div id="results">
+                {% for ticker, data in results.items() %}
+                    <div class="result-item">
+                        <h4>{{ ticker }}</h4>
+                        <p>Market Cap: {{ data.marketCap }}</p>
+                        <p>EPS: {{ data.trailingEps }}</p>
+                        <!-- Add more fields as per your data structure -->
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No results found. Please try again.</p>
+        {% endif %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 PriceProphet</p>
+    </footer>
+</body>
+</html>
